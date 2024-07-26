@@ -7,14 +7,23 @@ from video_filter.predefined_filters import color_filters
 class VideoFilter:
     def __init__(
             self,
-            filter_name: str = "sepia",
+            filter_name: str = "none",
             custom_matrix: np.ndarray = None,
             filter_strength: float = 1.0,
+            brightness: float = 1.0,
         ):
         self.filter_name = filter_name
         self.custom_matrix = custom_matrix
+        self.brightness = self.get_brightness(brightness)
         self.filter_strength = self.get_filter_strength(filter_strength)
         self.filter_matrix = self.get_filter_matrix()
+    
+    def get_brightness(self, brightness):
+        if brightness < 0:
+            raise ValueError(
+                "Brightness must be greater than 0."
+            )
+        return brightness
     
     def get_filter_strength(self, filter_strength):
         if filter_strength < 0 or filter_strength > 1:
@@ -30,14 +39,14 @@ class VideoFilter:
                     "Custom filter matrix must have shape (3, 3), but got "
                     f"{self.custom_matrix.shape}."
                 )
-            return self.apply_strength(self.custom_matrix)
+            return self.custom_matrix
         elif self.filter_name is not None:
             filter_matrix = color_filters.get(self.filter_name, None)
             if filter_matrix is None:
                 raise ValueError(
                     f"Filter with name {self.filter_name} not found."
                 )
-            return self.apply_strength(filter_matrix)
+            return filter_matrix
         else:
             raise ValueError(
                 "Either filter_name or custom_matrix must be provided."
@@ -49,9 +58,12 @@ class VideoFilter:
             + (1 - self.filter_strength) * np.identity(3)
         )
 
+    def get_transform_matrix(self):
+        return self.brightness * self.apply_strength(self.filter_matrix)
+    
     def apply_filter(self, frame):
         frame = frame.astype(np.float32)
-        filtered_frame = cv2.transform(frame, self.filter_matrix)
+        filtered_frame = cv2.transform(frame, self.get_transform_matrix())
         filtered_frame = np.clip(filtered_frame, 0, 255).astype(np.uint8)
         return filtered_frame
 
