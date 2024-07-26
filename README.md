@@ -9,11 +9,11 @@ like TikTok, YouTube, Facebook, etc. All formats are supported (reels, shorts,
 
 original | grayscale | warm |
 :---:|:---:|:---:
-![](examples/video_2.gif) | ![](examples/video_2_grayscale.gif) | ![](examples/video_2_warm.gif)
+![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_2.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_2_grayscale.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_2_warm.gif)
 
 cool | red_only | invert_red_green
 :---:|:---:|:---:
-![](examples/video_2_cool.gif) | ![](examples/video_2_red_only.gif) | ![](examples/video_2_invert_red_green.gif)
+![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_2_cool.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_2_red_only.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_2_invert_red_green.gif)
 
 ## Installation
 
@@ -25,7 +25,7 @@ Fork the repository.
 
 Brightness -50% | Original | Brightness +50% | Brightness +100%
 :---:|:---:|:---:|:---:
-![](examples/video_1_brightness_50.gif) | ![](examples/video_1.gif) | ![](examples/video_1_brightness_150.gif) | ![](examples/video_1_brightness_200.gif)
+![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_brightness_50.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_brightness_150.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_brightness_200.gif)
 
 ```
 from video_filter import VideoFilter
@@ -38,7 +38,7 @@ vf.process_video("examples/video_1.mp4", "output.mp4")
 
 Original | Sepia filter at 50% strength | Sepia filter at 100% strength
 :---:|:---:|:---:
-![](examples/video_2.gif) |  ![](examples/video_2_sepia_50.gif) | ![](examples/video_2_sepia_100.gif)
+![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_2.gif) |  ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_2_sepia_50.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_2_sepia_100.gif)
 
 ```
 from video_filter import VideoFilter
@@ -51,7 +51,7 @@ vf.process_video("examples/video_2.mp4", "output.mp4")
 
 Original      |  Custom filter
 :-------------------------:|:-------------------------:
-![](examples/video_1.gif) |  ![](examples/video_1_custom.gif)
+![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1.gif) |  ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_custom.gif)
 
 ```
 from video_filter import VideoFilter
