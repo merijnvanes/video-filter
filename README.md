@@ -1,9 +1,9 @@
 # Video Filter
 
-Enhance your video (output: mp4) with color filters. This Python project helps
+Enhance your video with color filters. This Python project helps
 you to apply a color filter to your Instagram reel or any other social platforms
 like TikTok, YouTube, Facebook, etc. All formats are supported (reels, shorts,
-4k, etc.).
+4k, etc.). The output video is in mp4 format.
 
 ## Filter gallery selection
 
