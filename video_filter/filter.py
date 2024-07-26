@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-from video_filter.predefined_filters import color_filters
+from video_filter.stock_filters import color_filters
 
 
 class VideoFilter:

@@ -5,6 +5,16 @@ you to apply a color filter to your Instagram reel or any other social platforms
 like TikTok, YouTube, Facebook, etc. All formats are supported (reels, shorts,
 4k, etc.).
 
+## Filter gallery selection
+
+original | grayscale | warm |
+:---:|:---:|:---:
+![](examples/video_2.gif) | ![](examples/video_2_grayscale.gif) | ![](examples/video_2_warm.gif)
+
+cool | red_only | invert_red_green
+:---:|:---:|:---:
+![](examples/video_2_cool.gif) | ![](examples/video_2_red_only.gif) | ![](examples/video_2_invert_red_green.gif)
+
 ## Installation
 
 Fork the repository.
@@ -13,56 +23,51 @@ Fork the repository.
 
 ### Example 1: Brightness
 
-Original      |  Filtered (brightness increase)      |  Filtered (brightness increase)
-:-------------------------:|:-------------------------:|:-------------------------:
-![](examples/video_1.gif) |  ![](examples/video_1_brightness_increase.gif) |  ![](examples/video_1_brightness_increase.gif)
+Brightness -50% | Original | Brightness +50% | Brightness +100%
+:---:|:---:|:---:|:---:
+![](examples/video_1_brightness_50.gif) | ![](examples/video_1.gif) | ![](examples/video_1_brightness_150.gif) | ![](examples/video_1_brightness_200.gif)
 
 ```
 from video_filter import VideoFilter
 
-input_video_path = "examples/video_1.mp4"
-output_video_path = "examples/video_1_brightness_increase.mp4"
-
-video_filter = VideoFilter(filter_name="brightness_increase")
-video_filter.process_video(input_video_path, output_video_path)
+vf = VideoFilter(brightness=1.5)
+vf.process_video("examples/video_1.mp4", "output.mp4")
 ```
 
-### Example 2: Sepia
+### Example 2: Color filters
 
-Original      |  Filtered (sepia at 50%)
-:-------------------------:|:-------------------------:
-![](examples/video_2.gif) |  ![](examples/video_2_sepia.gif)
+Original | Sepia filter at 50% strength | Sepia filter at 100% strength
+:---:|:---:|:---:
+![](examples/video_2.gif) |  ![](examples/video_2_sepia_50.gif) | ![](examples/video_2_sepia_100.gif)
 
 ```
 from video_filter import VideoFilter
 
-input_video_path = "examples/video_2.mp4"
-output_video_path = "examples/video_2_sepia.mp4"
-
-video_filter = VideoFilter(filter_name="sepia", filter_strength=0.5)
-video_filter.process_video(input_video_path, output_video_path)
+vf = VideoFilter(filter_name="sepia", filter_strength=0.5)
+vf.process_video("examples/video_2.mp4", "output.mp4")
 ```
 
 ### Example 3: Custom filter
 
-Original      |  Filtered (custom filter)
+Original      |  Custom filter
 :-------------------------:|:-------------------------:
-![](examples/video_2.gif) |  ![](examples/video_2_custom.gif)
+![](examples/video_1.gif) |  ![](examples/video_1_custom.gif)
 
 ```
 from video_filter import VideoFilter
 import numpy as np
 
-input_video_path = "examples/video_2.mp4"
-output_video_path = "examples/video_2_custom2.mp4"
-
 # Matrix (3x3) vector (3x1) [b, g, r]) multiplication
 filter_matrix = np.array([
-    [0.8, 0.0, 0.0],  # Blue
-    [0.0, 1.0, 0.1],  # Green
-    [0.0, 0.2, 1.2]   # Red
+    [0.7, 0.0, 0.1],  # Blue
+    [0.2, 1.0, 0.3],  # Green
+    [0.4, 0.2, 1.2]   # Red
 ])
 
-video_filter = VideoFilter(custom_matrix=filter_matrix, filter_strength=0.5)
-video_filter.process_video(input_video_path, output_video_path)
+vf = VideoFilter(
+    custom_matrix=filter_matrix,
+    filter_strength=0.6,
+    brightness=0.8
+)
+vf.process_video("examples/video_1.mp4", "output.mp4")
 ```
