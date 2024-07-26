@@ -19,7 +19,7 @@ setup(
     description="Enhance your video with filters.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    version="0.0.2",
+    version="0.0.3",
     url="https://github.com/merijnvanes/video-filter.git",
     author="Merijn van Es",
     author_email="merijnvanes@gmail.com",
