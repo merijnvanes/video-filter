@@ -39,3 +39,27 @@ output_video_path = "examples/video_2_sepia.mp4"
 video_filter = VideoFilter(filter_name="sepia", filter_strength=0.5)
 video_filter.process_video(input_video_path, output_video_path)
 ```
+
+### Example 3: Custom filter
+
+Original      |  Filtered (custom filter)
+:-------------------------:|:-------------------------:
+![](examples/video_2.gif) |  ![](examples/video_2_custom.gif)
+
+```
+from video_filter import VideoFilter
+import numpy as np
+
+input_video_path = "examples/video_2.mp4"
+output_video_path = "examples/video_2_custom.mp4"
+
+# Matrix (3x3) vector (3x1) [b, g, r]) multiplication
+filter_matrix = np.array([
+    [0.6, 0.0, 0.0],  # Blue
+    [0.0, 0.8, 0.1],  # Green
+    [0.0, 0.2, 1.0]   # Red
+])
+
+video_filter = VideoFilter(custom_matrix=filter_matrix, filter_strength=0.5)
+video_filter.process_video(input_video_path, output_video_path)
+```
