@@ -1,6 +1,9 @@
 # Video Filter
 
-Applies a color filter to a video.
+Enhance your video (output: mp4) with color filters. This Python project helps
+you to apply a color filter to your Instagram reel or any other social platforms
+like TikTok, YouTube, Facebook, etc. All formats are supported (reels, shorts,
+4k, etc.).
 
 ## Installation
 
@@ -51,13 +54,13 @@ from video_filter import VideoFilter
 import numpy as np
 
 input_video_path = "examples/video_2.mp4"
-output_video_path = "examples/video_2_custom.mp4"
+output_video_path = "examples/video_2_custom2.mp4"
 
 # Matrix (3x3) vector (3x1) [b, g, r]) multiplication
 filter_matrix = np.array([
-    [0.6, 0.0, 0.0],  # Blue
-    [0.0, 0.8, 0.1],  # Green
-    [0.0, 0.2, 1.0]   # Red
+    [0.8, 0.0, 0.0],  # Blue
+    [0.0, 1.0, 0.1],  # Green
+    [0.0, 0.2, 1.2]   # Red
 ])
 
 video_filter = VideoFilter(custom_matrix=filter_matrix, filter_strength=0.5)
