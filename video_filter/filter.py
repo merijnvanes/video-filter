@@ -67,7 +67,13 @@ class VideoFilter:
         filtered_frame = np.clip(filtered_frame, 0, 255).astype(np.uint8)
         return filtered_frame
 
-    def process_video(self, input_video_path, output_video_path):
+    def process_video(
+            self,
+            input_video_path,
+            output_video_path,
+            show_frames=False,
+            show_time=False,
+        ):
         cap = cv2.VideoCapture(input_video_path)
         if not cap.isOpened():
             raise Exception("Error: Could not open video.")
@@ -92,9 +98,10 @@ class VideoFilter:
             filtered_frame = self.apply_filter(frame)
             out.write(filtered_frame)
             
-            cv2.imshow("Filtered Video", filtered_frame)
-            if cv2.waitKey(1) & 0xFF == ord("q"):
-                break
+            if show_frames:
+                cv2.imshow("Filtered Video", filtered_frame)
+                if cv2.waitKey(1) & 0xFF == ord("q"):
+                    break
         
         cap.release()
         out.release()
