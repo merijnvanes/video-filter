@@ -13,9 +13,9 @@ Fork the repository.
 
 ### Example 1: Brightness
 
-Original      |  Filtered (brightness increase)
-:-------------------------:|:-------------------------:
-![](examples/video_1.gif) |  ![](examples/video_1_brightness_increase.gif)
+Original      |  Filtered (brightness increase)      |  Filtered (brightness increase)
+:-------------------------:|:-------------------------:|:-------------------------:
+![](examples/video_1.gif) |  ![](examples/video_1_brightness_increase.gif) |  ![](examples/video_1_brightness_increase.gif)
 
 ```
 from video_filter import VideoFilter
