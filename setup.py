@@ -29,7 +29,8 @@ setup(
         "mp4", "video processing", "video editor tools", "short", "shorts",
         "reel", "reels", "social", "social post", "social posts",
         "social media", "social media post", "social media posts",
-        "cool filter", "warm filter", "grayscale", "grayscale filter"
+        "cool filter", "warm filter", "grayscale", "grayscale filter",
+        "saturation", "saturation filter", "video saturation",
     ],
     packages=find_packages(exclude=["tests*"]),
     python_requires=">=3.7",
