@@ -17,20 +17,29 @@ cool | red_only | invert_red_green
 
 ## Installation
 
-Fork the repository.
+Run the following command in the terminal to install the package:
+
+```
+pip install video-filter
+```
 
 ## Usage examples
 
-### Example 1: Brightness
+### Example 1: Brightness and saturation
 
-Brightness -50% | Original | Brightness +50% | Brightness +100%
+Brightness and saturation are both set to 0.0 by default, meaning the video 
+will be unchanged.
+
+- | Brightness -0.5 | Brightness 0.0 | Brightness +0.5
 :---:|:---:|:---:|:---:
-![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_brightness_50.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_brightness_150.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_brightness_200.gif)
+Saturation -0.5 |  | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_saturation_minus_1.gif) | 
+Saturation 0.0 | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_brightness_minus_1.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_brightness_plus_1.gif)
+Saturation +0.5 |  | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_saturation_plus_1.gif) | 
 
 ```
 from video_filter import VideoFilter
 
-vf = VideoFilter(brightness=1.5)
+vf = VideoFilter(brightness=1.0, saturation=0.0)
 vf.process_video("examples/video_1.mp4", "output.mp4")
 ```
 
