@@ -10,25 +10,37 @@ class VideoFilter:
             filter_name: str = "none",
             custom_matrix: np.ndarray = None,
             filter_strength: float = 1.0,
-            brightness: float = 1.0,
+            brightness: float = 0.0,
+            saturation: float = 0.0,
         ):
         self.filter_name = filter_name
         self.custom_matrix = custom_matrix
         self.brightness = self.get_brightness(brightness)
+        self.saturation = self.get_saturation(saturation)
         self.filter_strength = self.get_filter_strength(filter_strength)
         self.filter_matrix = self.get_filter_matrix()
     
-    def get_brightness(self, brightness):
-        if brightness < 0:
+    @staticmethod
+    def get_brightness(brightness):
+        if (brightness < -2.0) or (brightness > 2.0):
             raise ValueError(
-                "Brightness must be greater than 0."
+                "Brightness must be between -2.0 and 2.0."
             )
         return brightness
     
-    def get_filter_strength(self, filter_strength):
-        if filter_strength < 0 or filter_strength > 1:
+    @staticmethod
+    def get_saturation(saturation):
+        if (saturation < -2.0) or (saturation > 2.0):
             raise ValueError(
-                "Filter strength must be between 0 and 1."
+                "Saturation must be between -2.0 and 2.0."
+            )
+        return saturation
+    
+    @staticmethod
+    def get_filter_strength(filter_strength):
+        if filter_strength < 0.0 or filter_strength > 1.0:
+            raise ValueError(
+                "Filter strength must be between 0.0 and 1.0."
             )
         return filter_strength
     
@@ -58,12 +70,27 @@ class VideoFilter:
             + (1 - self.filter_strength) * np.identity(3)
         )
 
-    def get_transform_matrix(self):
-        return self.brightness * self.apply_strength(self.filter_matrix)
+    def get_color_transform_matrix(self):
+        return self.apply_strength(self.filter_matrix)
+    
+    def apply_color_transform(self, frame):
+        return cv2.transform(frame, self.get_color_transform_matrix())
+    
+    def apply_brightness(self, frame):
+        return 2**self.brightness * frame
+    
+    def apply_saturation(self, frame):
+        return (
+            self.saturation 
+            * ((np.sin(frame / (255 / np.pi) - (np.pi / 2)) + 1) / 2) * 255
+            + (1-self.saturation) * frame
+        )
     
     def apply_filter(self, frame):
         frame = frame.astype(np.float32)
-        filtered_frame = cv2.transform(frame, self.get_transform_matrix())
+        filtered_frame = self.apply_color_transform(frame)
+        filtered_frame = self.apply_saturation(filtered_frame)
+        filtered_frame = self.apply_brightness(filtered_frame)
         filtered_frame = np.clip(filtered_frame, 0, 255).astype(np.uint8)
         return filtered_frame
 
