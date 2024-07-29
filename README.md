@@ -30,11 +30,11 @@ pip install video-filter
 Brightness and saturation are both set to 0.0 by default, meaning the video 
 will be unchanged.
 
-x | Brightness -0.5 | Brightness 0.0 | Brightness +0.5
+x | Brightness -1.0 | Brightness 0.0 | Brightness +1.0
 :---:|:---:|:---:|:---:
-Saturation -0.5 |  | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_saturation_minus_1.gif) | 
-Saturation 0.0 | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_brightness_minus_1.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_brightness_plus_1.gif)
-Saturation +0.5 |  | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_saturation_plus_1.gif) | 
+**Saturation -1.0** |  | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_saturation_minus_1.gif) | 
+**Saturation 0.0** | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_brightness_minus_1.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1.gif) | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_brightness_plus_1.gif)
+**Saturation +1.0** |  | ![](https://raw.githubusercontent.com/merijnvanes/video-filter/master/examples/video_1_saturation_plus_1.gif) | 
 
 ```
 from video_filter import VideoFilter

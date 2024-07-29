@@ -99,7 +99,6 @@ class VideoFilter:
             input_video_path,
             output_video_path,
             show_frames=False,
-            show_time=False,
         ):
         cap = cv2.VideoCapture(input_video_path)
         if not cap.isOpened():
